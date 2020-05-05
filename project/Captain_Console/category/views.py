@@ -3,5 +3,5 @@ from Captain.models import Products
 
 # Create your views here.
 def index(request):
-    context = {'products': Products.objects.filter(category__name="Games").order_by('name')}
+    context = {'product': Products.objects.filter(category__name="Games").order_by('name')}
     return render(request, 'category/index.html', context)
