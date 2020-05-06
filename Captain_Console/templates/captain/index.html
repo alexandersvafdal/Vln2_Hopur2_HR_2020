@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+            <div class = "row">
+    {% for product in products %}
+                <div class="col mt-3 mb-3">
+                    <a href="#">
+                        <img class="img-thumbnail"  src="{{ product.photo }}" alt="img"/>
+                        <h4>{{ product.name }}</h4>
+                        <h5>$ {{ product.price }}</h5>
+                    </a>
+                </div>
+    {% endfor %}
+            </div>
+
+{% endblock %}
