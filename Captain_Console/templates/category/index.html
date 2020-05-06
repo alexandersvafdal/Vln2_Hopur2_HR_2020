@@ -7,18 +7,14 @@
     <div class="filter-content">
             <div class="card-body captain float-left">
                 <h3>Filter</h3>
-            <form class="GET" action=".">
-                {% for product in products %}
-                <label class="form-check">
-                  <input class="form-check-input" type="checkbox" name="category_{{ product.manufacturer }}" value="">
-                  <span class="form-check-label">
-                      {{ product.manufacturer }}
-                  </span>
-                </label>
+                <ul>
+                <li><a href="/{{ categoryName }}">all products</a></li>
+                {% for manufacturer in allManufacturers %}
+                    <li><a href="{{ manufacturer }}">{{ manufacturer }}</a></li>
                 {% endfor %}
-            </form>
+                </ul>
             </div>
-        </div>
+    </div>
 
 
     <div class="w-50 center-block">
