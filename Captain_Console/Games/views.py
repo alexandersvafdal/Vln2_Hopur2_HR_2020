@@ -5,7 +5,6 @@ def index(request):
     allManufacturers = Products.objects.filter(category__name="Games").values_list('manufacturer', flat=True).distinct(
         'manufacturer')
 
-
     context = {'products': Products.objects.filter(category__name="Games").order_by('name'),
                'allManufacturers': allManufacturers, 'categoryName': 'games'}
 
