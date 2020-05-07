@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name="accessories-index"),
-    re_path(r'(?P<manufacturer>.*)', views.manfacturer, name="filter_manufacturer"),
+    re_path(r'(?P<param>.*)', views.manfacturer, name="filter_manufacturer"),
 ]

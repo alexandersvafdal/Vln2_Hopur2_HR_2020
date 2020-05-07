@@ -24,4 +24,5 @@ urlpatterns = [
     path('games/', include('Games.urls')),
     path('accessories/', include('Accessories.urls')),
     path('<int:pk>/', include('Captain.urls')),
+    path('search/', include('Search.urls')),
 ]

@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'Captain.apps.CaptainConfig',
     'Consoles.apps.ConsolesConfig',
     'Games.apps.GamesConfig',
+    'Search.apps.SearchConfig',
     'Accessories.apps.AccessoriesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
