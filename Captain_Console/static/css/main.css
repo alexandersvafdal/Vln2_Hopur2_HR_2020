@@ -17,6 +17,6 @@ nav a{
     color:white !important;
 }
 
-
-
-
+.card-body {
+    width: 100%;
+}

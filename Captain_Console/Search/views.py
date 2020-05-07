@@ -5,8 +5,10 @@ from django.shortcuts import render
 from Captain.models import Products
 
 # Create your views here.
-def get_product_queryset(request, query=None):
-    context = {
-        'products': Products.objects.filter(name__icontains="Sega Genesis").order_by('name')}
+def SearchResultsView(request):
+    if 'search' in request.GET:
+        query = request.GET.get('search')
+        productList = Products.objects.filter(name__icontains=query).order_by('name')
+        context = {'products': productList, 'query': query}
 
-    return render(request, 'searchResult/search_results.html', context)
+        return render(request, 'searchResult/search_results.html', context)

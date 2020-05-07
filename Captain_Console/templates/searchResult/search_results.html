@@ -1,44 +1,41 @@
 {% extends 'base.html' %}
 
 
-
 {% block content %}
 
-<!--    <div class="filter-content">-->
-<!--            <div class="card-body captain float-left">-->
-<!--                <h3>Filter</h3>-->
-<!--                <ul class="list-unstyled">-->
-<!--                <li><a  class="text-white" href="/{{ categoryName }}">All Products</a></li>-->
-<!--                {% for manufacturer in allManufacturers %}-->
-<!--                    <li><a class="text-white" href="{{ manufacturer }}">{{ manufacturer }}</a></li>-->
-<!--                {% endfor %}-->
-
-<!--                </ul>-->
-<!--                <h3>Sort by</h3>-->
-<!--                <ul class="list-unstyled">-->
-<!--                    <li><a class="text-white" href="name">A-Z</a></li>-->
-<!--                    <li><a class="text-white" href="price-DESC">Price Low - High</a></li>-->
-<!--                    <li><a class="text-white" href="prive-ASC">Price High - Low</a></li>-->
-<!--                </ul>-->
-
-<!--            </div>-->
-<!--    </div>-->
-
-
+{% if products %}
     <div class="w-50 center-block">
         <div class="container text-center">
-                <div class = "row" >
-        {% for product in products %}
-                    <div class="col-md-3 col-lg-3 col-xl-3 m-2">
-                        <a href="/captain/{{ product.id }}">
-                            <img class="w-100"  src="{{ product.productimages_set.first.image }}" alt="img" />
-                            <h4 class="">{{ product.name }}</h4>
-                            <h5>$ {{ product.price }}</h5>
-                        </a>
-                    </div>
-        {% endfor %}
+          <div class = "row">
+              {% for product in products %}
+                          <div class="col-md-3 col-lg-3 col-xl-3 m-2">
+                              <a href="/captain/{{ product.id }}">
+                                  <img class="w-100"  src="{{ product.productimages_set.first.image }}" alt="img" />
+                                  <h4 class="">{{ product.name }}</h4>
+                                  <h5>$ {{ product.price }}</h5>
+                              </a>
+                          </div>
+              {% endfor %}
                 </div>
         </div>
     </div>
+
+{% else %}
+
+  <div class="container">
+    <div class="row">
+      <div class="card m-auto">
+        <div class="card-body mt-2 mb-2">
+          <h2 class="card-title">
+            No results
+          </h2>
+          <p>There were no results matching your search: "{{query}}".</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endif %}
+
 
 {% endblock %}
