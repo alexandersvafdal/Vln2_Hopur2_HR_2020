@@ -3,7 +3,10 @@
 {% block content %}
     <div class="container text-center">
         <a href="#">
-            <img class="w-25"  src="{{ products.photo }}" alt="img" />
+            {% for productsImage in products.productimages_set.all %}
+                <img class="w-25"  src="{{ productsImage.image }}" alt="img" />
+            {% endfor %}
+
             <h4 class="">{{ products.name }}</h4>
             <h5>$ {{ products.price }}</h5>
             <h6>{{ products.description }}</h6>
