@@ -39,10 +39,10 @@ def manfacturer(request, param):
 
 
     elif param == 'name':
-        context = {
+         context = {
             'products': Products.objects.filter(category__name="Games").order_by('name'),
             'allManufacturers': allManufacturers, 'categoryName': 'games'}
-        return render(request, 'category/index.html', context)
+         return render(request, 'category/index.html', context)
 
     else:
         context = {'products': Products.objects.filter(category__name="Games").filter(manufacturer=param).order_by('name'),
