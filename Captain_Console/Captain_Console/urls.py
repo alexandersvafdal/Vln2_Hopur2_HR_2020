@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('captain/', include('Captain.urls')),
+    path('', include('Captain.urls')),
     path('consoles/', include('Consoles.urls')),
     path('games/', include('Games.urls')),
     path('accessories/', include('Accessories.urls')),
+    path('<int:pk>/', include('Captain.urls')),
 ]

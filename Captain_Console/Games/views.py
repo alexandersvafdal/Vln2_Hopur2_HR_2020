@@ -16,24 +16,37 @@ def index(request):
 
 
 
-def manfacturer(request, manufacturer):
+def manfacturer(request, param):
     allManufacturers = Products.objects.filter(category__name="Games").values_list('manufacturer', flat=True).distinct(
         'manufacturer')
 
-    splited_manufacturer = manufacturer.split("/")
+    #splited_manufacturer = manufacturer.split("/")
 
-    if len(splited_manufacturer) > 1:
-        if splited_manufacturer[1] == 'price':
+    #if len(splited_manufacturer) > 1:
+    if param == 'price-ASC':
 
-            context = {
-                'products': Products.objects.filter(category__name="Games").filter(manufacturer=splited_manufacturer[0]).order_by(
-                    'price'),
-                'allManufacturers': allManufacturers, 'categoryName': 'games'}
-            return render(request, 'category/index.html', context)
+        context = {
+            'products': Products.objects.filter(category__name="Games").order_by('price'),
+            'allManufacturers': allManufacturers, 'categoryName': 'games'}
+        return render(request, 'category/index.html', context)
+
+    elif param == 'price-DESC':
+
+        context = {
+            'products': Products.objects.filter(category__name="Games").order_by('-price'),
+            'allManufacturers': allManufacturers, 'categoryName': 'games'}
+        return render(request, 'category/index.html', context)
+
+
+    elif param == 'name':
+        context = {
+            'products': Products.objects.filter(category__name="Games").order_by('name'),
+            'allManufacturers': allManufacturers, 'categoryName': 'games'}
+        return render(request, 'category/index.html', context)
 
     else:
-        context = {'products': Products.objects.filter(category__name="Games").filter(manufacturer=manufacturer).order_by('price'),
+        context = {'products': Products.objects.filter(category__name="Games").filter(manufacturer=param).order_by('name'),
                'allManufacturers': allManufacturers, 'categoryName': 'games'}
-        print(context)
 
         return render(request, 'category/index.html', context)
+

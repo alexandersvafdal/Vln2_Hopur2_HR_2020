@@ -18,9 +18,8 @@
                 <ul class="list-unstyled">
                     <li><a class="text-white" href="name">A-Z</a></li>
                     <li><a class="text-white" href="price-DESC">Price Low - High</a></li>
-                    <li><a class="text-white" href="prive-ASC">Price High - Low</a></li>
+                    <li><a class="text-white" href="price-ASC">Price High - Low</a></li>
                 </ul>
-
             </div>
     </div>
 
@@ -29,8 +28,8 @@
         <div class="container text-center">
                 <div class = "row" >
         {% for product in products %}
-                    <div class="col-md-3 col-lg-3 col-xl-3 m-2">
-                        <a href="/captain/{{ product.id }}">
+                    <div class="col-md-3 col-lg-3 col-xl-3 m-3">
+                        <a href="/{{ product.id }}">
                             <img class="w-100"  src="{{ product.productimages_set.first.image }}" alt="img" />
                             <h4 class="">{{ product.name }}</h4>
                             <h5>$ {{ product.price }}</h5>
