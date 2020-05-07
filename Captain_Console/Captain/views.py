@@ -13,3 +13,10 @@ def index(request):
 class DetailView(generic.DetailView):
     model = Products
     template_name = 'detailProduct/product.html'
+
+def SearchResultsView(request):
+    model = Products
+    template_name = 'search_results.html'
+
+    def get_queryset(self):  # new
+        return Products.objects.filter(name__icontains='Sega Genesis')
