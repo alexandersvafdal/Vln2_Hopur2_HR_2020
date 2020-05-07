@@ -7,10 +7,10 @@
     <div class="filter-content">
             <div class="card-body captain float-left">
                 <h3>Filter</h3>
-                <ul>
-                <li><a href="/{{ categoryName }}">all products</a></li>
+                <ul class="list-unstyled">
+                <li><a  class="text-white" href="/{{ categoryName }}">all products</a></li>
                 {% for manufacturer in allManufacturers %}
-                    <li><a href="{{ manufacturer }}">{{ manufacturer }}</a></li>
+                    <li><a class="text-white" href="{{ manufacturer }}">{{ manufacturer }}</a></li>
                 {% endfor %}
                 </ul>
             </div>

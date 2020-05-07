@@ -1,6 +1,6 @@
 .captain{
     background-color: #5a8299;
-    color:white;
+    color: white;
 }
 
 .center-block {
@@ -11,10 +11,12 @@
 
 nav .navbar-nav li a{
   color: white !important;
-  }
+}
 
 nav a{
     color:white !important;
 }
+
+
 
 
