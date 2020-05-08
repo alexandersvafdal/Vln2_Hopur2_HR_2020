@@ -27,7 +27,7 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="nav navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'consoles-index' %}">Consoles<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'consoles-index' %}">Consoles</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'games-index' %}">Games</a>
@@ -47,15 +47,13 @@
       {% endif %}
     </ul>
       {% if user.is_authenticated %}
-        <div class="mh-100 mw-100" >
-          <img src="{{ user.profile.profile_image }}" class="profile-image" />
-        </div>
+
       {% endif %}
   </div>
 
 </nav>
 
-    <div class="container m-5">
+    <div class="m-5">
         {% block content %}
         {% endblock %}
     </div>
