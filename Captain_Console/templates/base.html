@@ -35,8 +35,8 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'accessories-index' %}">Accessories</a>
       </li>
-      <form action="{% url 'search-index' %}" method="get">
-        <input class="form-control" name="q" id="id_q" type="text" placeholder="Search...">
+      <form class="form-inline my-2 my-lg-0" action="{% url 'search-index' %}" method="get">
+        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search...">
       </form>
       {% if user.is_authenticated %}
         <li class="nav-item active"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
