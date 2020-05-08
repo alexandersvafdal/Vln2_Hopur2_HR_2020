@@ -2,7 +2,11 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from Captain.models import Products
+from Search.models import SearchQuery
+from user.models import Profile
+from django.contrib.auth.models import User
 
 # Create your views here.
 def SearchResultsView(request):
@@ -10,5 +14,10 @@ def SearchResultsView(request):
         query = request.GET.get('search')
         productList = Products.objects.filter(name__icontains=query).order_by('name')
         context = {'products': productList, 'query': query}
+
+        if request.user.is_authenticated:
+            user = User.objects.filter(id=request.user.id).first()
+            searchText = SearchQuery(query=query, user=user)
+            searchText.save()
 
         return render(request, 'searchResult/search_results.html', context)
