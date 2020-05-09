@@ -25,5 +25,6 @@ urlpatterns = [
     path('accessories/', include('Accessories.urls')),
     path('<int:pk>/', include('Captain.urls')),
     path('search/', include('Search.urls')),
-    path('user/', include('user.urls'))
+    path('user/', include('user.urls')),
+    path('cart/', include('ShoppingCart.urls')),
 ]

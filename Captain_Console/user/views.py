@@ -25,10 +25,6 @@ def profile(request):
             profile.user = request.user
             profile.save()
             return redirect('profile')
-        # else:
-        #     print("oh well")
-        #     content = {'error': 'please follow the strict guidelines on how to choose your passwords'}
-        #     return render(request, 'user/register.html', content)
 
     return render(request, 'user/profile.html', {
         'form': ProfileForm(instance=profile)
