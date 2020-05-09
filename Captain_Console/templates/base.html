@@ -38,10 +38,11 @@
       <form class="form-inline my-2 my-lg-0" action="{% url 'search-index' %}" method="get">
         <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search...">
       </form>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'history-index' %}">Search History</a>
-      </li>
+
       {% if user.is_authenticated %}
+          <li class="nav-item">
+        <a class="nav-link" href="{% url 'history-index' %}">Search History</a>
+        </li>
         <li class="nav-item active"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
         <li class="nav-item active"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         <li class="nav-item active"><a class="nav-link" href="#"><i class="fa fa-shopping-cart"></i></a></li>
