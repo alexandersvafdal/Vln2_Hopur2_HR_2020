@@ -22,7 +22,7 @@ def SearchResultsView(request):
 
         return render(request, 'searchResult/search_results.html', context)
 
-@login_required()
+@login_required(login_url="/user/login")
 def HistoryView(request):
     user = User.objects.filter(id=request.user.id).first()
     context = {'queries': SearchQuery.objects.filter(user=user.id)}
