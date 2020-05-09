@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    <div>
+        <h2>This is search History</h2>
+    </div>
+    <div>
+        {% for query in queries %}
+        <li>
+            {{query.query}}
+        </li>
+        {% endfor %}
+    </div>
+{% endblock %}
