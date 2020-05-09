@@ -2,11 +2,11 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import render
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from Captain.models import Products
 from Search.models import SearchQuery
-from user.models import Profile
-from django.contrib.auth.models import User
+
 
 # Create your views here.
 def SearchResultsView(request):
@@ -21,3 +21,10 @@ def SearchResultsView(request):
             searchText.save()
 
         return render(request, 'searchResult/search_results.html', context)
+
+@login_required(login_url="/user/login")
+def HistoryView(request):
+    user = User.objects.filter(id=request.user.id).first()
+    context = {'queries': SearchQuery.objects.filter(user=user.id)}
+    print(user, context)
+    return render(request, 'user/search_history.html', context)

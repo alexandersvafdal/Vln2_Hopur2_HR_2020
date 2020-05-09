@@ -3,5 +3,6 @@ from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
+    path('history', views.HistoryView, name="history-index"),
     path('', views.SearchResultsView, name="search-index"),
 ]
