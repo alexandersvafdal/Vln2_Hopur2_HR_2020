@@ -61,7 +61,6 @@ def deleteFromCart(request):
                     else:
                         del cart[productId]
 
-
                 user.cart = json.dumps(cart)
                 user.save()
         else:
@@ -69,6 +68,7 @@ def deleteFromCart(request):
 
 
         return JsonResponse(data)
+
 
 @login_required
 def shoppingCartData(request):
@@ -79,7 +79,7 @@ def shoppingCartData(request):
 
     products = Products.objects.all().filter(id__in=userCart.keys())
 
-    #qty , SingleProduct
+
     data = []
     for key, value in userCart.items():
         data.append({"qty": value, "data": products.get(id=key)})

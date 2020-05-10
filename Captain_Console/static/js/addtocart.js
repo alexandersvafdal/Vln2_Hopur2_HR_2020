@@ -1,8 +1,8 @@
 
 
 
-function addToCart(productId,userId) {
-  // const id = $(elem).attr('id');
+function addToCart(productId) {
+
   $.ajax({
     url:            "/cart/addto",
     type:           'POST',
@@ -10,20 +10,18 @@ function addToCart(productId,userId) {
       request.setRequestHeader("X-CSRFToken", crfToken);
     },
     data: {
-        'productId': productId,
-        'userId': userId
+        'productId': productId
     },
     contentType:    'application/json; charset=utf-8',
     dataType:       'json',
     success:  function (result) {
-      console.log("Allt fór vel")
-      console.log(result)
+
     }
   });
 }
 
-function deleteFromCart(productId,userId) {
-  // const id = $(elem).attr('id');
+function deleteFromCart(productId) {
+
   $.ajax({
     url:            "/cart/delete",
     type:           'DELETE',
@@ -31,14 +29,12 @@ function deleteFromCart(productId,userId) {
       request.setRequestHeader("X-CSRFToken", crfToken);
     },
     data: {
-        'productId': productId,
-        'userId': userId
+        'productId': productId
     },
     contentType:    'application/json; charset=utf-8',
     dataType:       'json',
     success:  function (result) {
-      console.log("Allt fór vel")
-      console.log(result)
+      location.reload()
     }
   });
 }

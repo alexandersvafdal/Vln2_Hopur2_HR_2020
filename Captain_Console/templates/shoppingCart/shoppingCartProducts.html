@@ -5,8 +5,8 @@
     <ul>
     {% if user.is_authenticated %}
         <li>{{ item.data.name }}: {{ item.qty }}</li>
-        <a href="/cart"><button onclick="deleteFromCart({{ item.data.id }}, {{ user.id }} )"  type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button>
-        </a>
+        <button onclick="deleteFromCart({{ item.data.id }});" ><i class="fa fa-trash" aria-hidden="true"></i></button>
+
     {% endif  %}
     </ul>
 {% endfor %}
