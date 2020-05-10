@@ -37,6 +37,39 @@ def addToCart(request):
 
         return JsonResponse(data)
 
+
+@login_required
+def deleteFromCart(request):
+    if request.method == "DELETE":
+        data = {"status": True}
+        body_unicode = request.body.decode('utf-8')
+        body = dict((dataString.split("=") for dataString in body_unicode.split("&") if dataString))
+        productId = body["productId"]
+
+        if productId and request.user.id:
+
+            user = Profile.objects.get(user_id=request.user.id)
+            if user:
+                try:
+                    cart = json.loads(user.cart)
+                except:
+                    cart = {}
+
+                if productId in cart:
+                    if cart[productId] > 1:
+                        cart[productId] -= 1
+                    else:
+                        del cart[productId]
+
+
+                user.cart = json.dumps(cart)
+                user.save()
+        else:
+            data['status'] = False
+
+
+        return JsonResponse(data)
+
 @login_required
 def shoppingCartData(request):
     currentUserId = str(request.user.id)
