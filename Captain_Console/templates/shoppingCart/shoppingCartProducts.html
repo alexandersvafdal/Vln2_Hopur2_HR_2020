@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for item in cartitems %}
+    <ul>
+        <li>{{ item.data.name }}: {{ item.qty }}</li>
+    </ul>
+
+{% endfor %}
+
+{% endblock %}

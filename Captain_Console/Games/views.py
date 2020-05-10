@@ -20,9 +20,6 @@ def manfacturer(request, param):
     allManufacturers = Products.objects.filter(category__name="Games").values_list('manufacturer', flat=True).distinct(
         'manufacturer')
 
-    #splited_manufacturer = manufacturer.split("/")
-
-    #if len(splited_manufacturer) > 1:
     if param == 'price-ASC':
 
         context = {

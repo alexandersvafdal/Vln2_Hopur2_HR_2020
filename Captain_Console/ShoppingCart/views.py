@@ -12,31 +12,44 @@ def addToCart(request):
     if request.method == "POST":
         data = {"status": True}
         body_unicode = request.body.decode('utf-8')
-        body = dict((toks.split("=") for toks in body_unicode.split("&") if toks))
+        body = dict((dataString.split("=") for dataString in body_unicode.split("&") if dataString))
         productId = body["productId"]
-        userId = body["userId"]
 
-        if productId and userId:
+        if productId and request.user.id:
 
-            # Er varan til
-            user = Profile.objects.get(user_id=userId)
-            print(user.name)
+            user = Profile.objects.get(user_id=request.user.id)
             if user:
-                if len(user.cart) > 0:
-                    user.cart += "," + productId
+                try:
+                    cart = json.loads(user.cart)
+                except:
+                    cart = {}
+
+                if productId in cart:
+                    cart[productId] += 1
                 else:
-                    user.cart += productId
+                    cart[productId] = 1
+
+                user.cart = json.dumps(cart)
                 user.save()
-
-            print(user.cart)
-
-            # Er notandinn til
-
-            # Bæta vorunni við
-
-            pass
         else:
             data['status'] = False
 
 
         return JsonResponse(data)
+
+@login_required
+def shoppingCartData(request):
+    currentUserId = str(request.user.id)
+    user = Profile.objects.get(user_id=currentUserId)
+    userCart = json.loads(user.cart)
+
+
+    products = Products.objects.all().filter(id__in=userCart.keys())
+
+    #qty , SingleProduct
+    data = []
+    for key, value in userCart.items():
+        data.append({"qty": value, "data": products.get(id=key)})
+    dictData = {'cartitems': data}
+
+    return render(request, 'shoppingCart/shoppingCartProducts.html', dictData)
