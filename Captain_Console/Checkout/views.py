@@ -19,7 +19,7 @@ def CheckoutView(request):
     orderTotal = 0
     for key, value in userCart.items():
         product = products.get(id=key)
-        total = int(product.price) * int(value)
+        total = float(product.price) * int(value)
         orderTotal += total
         cart.append({"qty": value, "product": product, "total": total})
 
