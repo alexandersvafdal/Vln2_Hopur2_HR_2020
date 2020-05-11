@@ -21,3 +21,9 @@ nav a{
     width: 100%;
 }
 
+div div div div button{
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+

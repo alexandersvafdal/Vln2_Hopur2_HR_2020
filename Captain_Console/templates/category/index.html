@@ -4,8 +4,8 @@
 
 {% block content %}
 
-    <div class="filter-content">
-            <div class="card-body captain float-left">
+    <div class="filter-content float-left m-3">
+            <div class="card-body captain">
                 <h3>Filter</h3>
                 <ul class="list-unstyled">
                 <li><a  class="text-white" href="/{{ categoryName }}">All Products</a></li>
@@ -24,19 +24,19 @@
     </div>
 
 
-    <div class="w-75 center-block">
-        <div class="container text-center">
+    <div class="w-75 center-block ">
+        <div class="container">
                 <div class = "row" >
         {% for product in products %}
-                    <div class="col-md-3 col-lg-3 col-xl-3 m-3">
-                        <a href="/{{ product.id }}">
-                            <img class="w-100"  src="{{ product.productimages_set.first.image }}" alt="img" />
-                            <h4 class="">{{ product.name }}</h4>
-                            <h5>$ {{ product.price }}</h5>
+                    <div class="col-md-3 col-lg-3 col-xl-3 m-3 p-3 shadow rounded">
+                        <a  class="text-primary" href="/{{ product.id }}">
+                            <img class="w-100 h-50 rounded"  src="{{ product.productimages_set.first.image }}" alt="img" />
+                            <h4 class="text-primary">{{ product.name }}</h4>
+                            <h5 >$ {{ product.price }}</h5>
                         </a>
                         {% if user.is_authenticated %}
 
-                                <button onclick="addToCart({{ product.id }})" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+                                <button class= "btn btn-info align-self-end" onclick="addToCart({{ product.id }})" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
                         {% endif %}
                     </div>
         {% endfor %}

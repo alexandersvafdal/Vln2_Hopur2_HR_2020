@@ -4,7 +4,7 @@
 {% for item in cartitems %}
     <ul>
     {% if user.is_authenticated %}
-        <li>{{ item.data.name }}: {{ item.qty }}</li>
+        <li>{{ item.data.name }} : {{ item.qty }} : {{ item.data.price }}</li>
         <button onclick="deleteFromCart({{ item.data.id }});" ><i class="fa fa-trash" aria-hidden="true"></i></button>
 
     {% endif  %}
