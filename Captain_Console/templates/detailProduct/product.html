@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container text-center">
 
-            <div class="center-block">
+            <div class="container">
             {% for productsImage in products.productimages_set.all %}
                 <img class="w-25 m-2 float-left"  src="{{ productsImage.image }}" alt="img" />
             {% endfor %}
