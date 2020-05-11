@@ -20,7 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a673fc5-79a3-4a08-8510-5247a6fe0e59" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ec3c2638-2dce-4668-9749-ac1e545d3f5f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ec3c2638-2dce-4668-9749-ac1e545d3f5f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ec3c2638-2dce-4668-9749-ac1e545d3f5f/storage_v2/_src_/database/ecbtnxei.XgGxHg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ec3c2638-2dce-4668-9749-ac1e545d3f5f/storage_v2/_src_/database/ecbtnxei.XgGxHg/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/.idea/inspectionProfiles/.gitignore.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/Checkout/forms/checkout_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/Checkout/forms/checkout_form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/Checkout/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/Checkout/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/Checkout/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/Checkout/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/Checkout/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/Checkout/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/Search/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/Search/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/ShoppingCart/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/ShoppingCart/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/templates/payment/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/templates/payment/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/templates/payment/review.html" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/templates/payment/review.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/templates/shoppingCart/shoppingCartProducts.html" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/templates/shoppingCart/shoppingCartProducts.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +42,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -51,7 +63,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Workspace/group_project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.editor.code.editing" />
   </component>
   <component name="SvnConfiguration">
@@ -64,7 +76,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588846571123</updated>
-      <workItem from="1588846609945" duration="16413000" />
+      <workItem from="1588846609945" duration="24472000" />
+      <workItem from="1588900606631" duration="211000" />
+      <workItem from="1588936887808" duration="412000" />
+      <workItem from="1588937351393" duration="8791000" />
+      <workItem from="1589032351059" duration="3130000" />
+      <workItem from="1589039531577" duration="379000" />
+      <workItem from="1589196314708" duration="14435000" />
     </task>
     <servers />
   </component>
@@ -81,16 +99,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="102" y="170" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588848508089">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="102" y="170" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588848508089" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1588857243647">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1588939661966">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588857243647" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588939661966" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1588860322388">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

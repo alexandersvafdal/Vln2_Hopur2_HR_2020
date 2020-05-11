@@ -82,7 +82,9 @@ def shoppingCartData(request):
 
     data = []
     for key, value in userCart.items():
-        data.append({"qty": value, "data": products.get(id=key)})
+        product = products.get(id=key)
+        total = int(product.price) * int(value)
+        data.append({"qty": value, "data": product, "total": total})
     dictData = {'cartitems': data}
 
     return render(request, 'shoppingCart/shoppingCartProducts.html', dictData)

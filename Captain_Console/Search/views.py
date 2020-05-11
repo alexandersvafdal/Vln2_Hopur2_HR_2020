@@ -26,5 +26,4 @@ def SearchResultsView(request):
 def HistoryView(request):
     user = User.objects.filter(id=request.user.id).first()
     context = {'queries': SearchQuery.objects.filter(user=user.id)}
-    print(user, context)
     return render(request, 'user/search_history.html', context)

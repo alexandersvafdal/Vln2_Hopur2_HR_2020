@@ -4,7 +4,15 @@ from django_countries.fields import CountryField
 class ChekcoutForm(forms.Form):
     firstName = forms.CharField()
     lastName = forms.CharField()
-    email = forms.CharField()
-    addres = forms.CharField()
-    country = CountryField(blank_label='Select country')
+    email = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'you@example.com'
+    }))
+    address = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Street 123'
+    }))
+    city = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'City'
+    }))
     zip = forms.CharField()
+    country = CountryField(blank_label='Select country').formfield()
+
