@@ -3,11 +3,18 @@
     <div>
         <h2>This is search History</h2>
     </div>
+    {% if queries %}
     <div>
         {% for query in queries %}
         <li>
-            {{query.query}}
+            <a href="/search/?search={{query.query}}">{{query.query}}</a>
         </li>
         {% endfor %}
     </div>
+    {% else %}
+    <div>
+        <p>You have no search history</p>
+    </div>
+    {% endif %}
+    <button onclick="" ><a  href="{% url 'deleteHistory' %}">Delete History</a></button>
 {% endblock %}
