@@ -6,7 +6,7 @@
     <ul class="list-group">
     {% if user.is_authenticated %}
         <li class="list-group-item align-items-center justify-content-between">
-            Product: <a href="/{{ item.data.pk }}">{{ item.data.name }}</a> Total Price: {{ item.total }}
+            <a href="/{{ item.data.pk }}">{{ item.data.name }}</a> Total Price: {{ item.total }}
             <span class="badge badge-primary badge-pill">{{ item.qty }}</span>
             <button onclick="deleteFromCart({{ item.data.id }});" class="btn btn btn-outline-danger btn-sm float-right" >
                 <i class="fa fa-trash" aria-hidden="true"></i>
