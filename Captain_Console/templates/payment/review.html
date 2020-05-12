@@ -1,10 +1,12 @@
 {% extends "base.html" %}
-{% block content %}
-    <div>
-        <div>
-            i am review
-        </div>
-        <a href="{% url 'order-success' %}">Confirm</a>
-    </div>
 
+{% block content %}
+
+<div>
+    {{ paymentInfo.body.firstName }}
+    <p>Cart total: {{ cartTotal }}</p>
+    <a href="{% url 'order-success' %}" class="btn btn-primary">Confirm</a>
+</div>
+
+<button onclick="" ><a  href="{% url 'checkout-index' %}">Checkout</a></button>
 {% endblock %}
