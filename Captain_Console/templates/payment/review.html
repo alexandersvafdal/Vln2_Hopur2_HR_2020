@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <div>{{ context }}</div>
+    <div>{{ paymentInfo.firstName }} {{ paymentInfo.lastName }}</div>
     <div>
     <p>Cart total: {{ cartTotal }}</p>
     <a href="{% url 'order-success' %}" class="btn btn-primary">Confirm</a>
