@@ -17,8 +17,11 @@ def SearchResultsView(request):
 
         if request.user.is_authenticated:
             user = User.objects.filter(id=request.user.id).first()
-            searchText = SearchQuery(query=query, user=user)
-            searchText.save()
+            allQueries = SearchQuery.objects.filter(user=user.id, query=query)
+
+            if (len(allQueries) == 0):
+                searchText = SearchQuery(query=query, user=user)
+                searchText.save()
 
         return render(request, 'searchResult/search_results.html', context)
 
@@ -27,3 +30,9 @@ def HistoryView(request):
     user = User.objects.filter(id=request.user.id).first()
     context = {'queries': SearchQuery.objects.filter(user=user.id)}
     return render(request, 'user/search_history.html', context)
+
+@login_required(login_url="/user/login")
+def DeleteHistory(request):
+    user = User.objects.filter(id=request.user.id).first()
+    SearchQuery.objects.filter(user=user.id).delete()
+    return render(request, 'user/search_history.html')

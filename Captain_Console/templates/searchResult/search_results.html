@@ -9,7 +9,7 @@
           <div class = "row">
               {% for product in products %}
                           <div class="col-md-3 col-lg-3 col-xl-3 m-2">
-                              <a href="/captain/{{ product.id }}">
+                              <a href="/{{ product.id }}">
                                   <img class="w-100"  src="{{ product.productimages_set.first.image }}" alt="img" />
                                   <h4 class="">{{ product.name }}</h4>
                                   <h5>$ {{ product.price }}</h5>
