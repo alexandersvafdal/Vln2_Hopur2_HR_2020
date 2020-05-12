@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container w-50">
+    <div class="container w-md-50">
         <div class="row no-gutter">
-            <div class="col text-right">
+            <div class="col-sm-12 col-md text-md-right text-sm-center text-center">
             {% for productsImage in products.productimages_set.all %}
                 <img class="w-50"  src="{{ productsImage.image }}" alt="img" />
             {% endfor %}
             </div>
 
-            <div class="text-left col">
+            <div class="text-left col-sm-12 col-md mt-sm-4">
                 <h4 class="">{{ products.name }}</h4>
                 <a class="d-block" href="/{{ products.category }}/{{ products.manufacturer}}"><h5 class="text-info">{{ products.manufacturer }}</h5></a>
                 <h5>$ {{ products.price }}</h5>
