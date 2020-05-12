@@ -3,17 +3,20 @@
 {% block content %}
     <div class="container text-center">
 
-            <div class="container">
+            <div class="container mx-auto">
             {% for productsImage in products.productimages_set.all %}
                 <img class="w-25 m-2 float-left"  src="{{ productsImage.image }}" alt="img" />
             {% endfor %}
             </div>
-            <h4 class="">{{ products.name }}</h4>
-            <h5>$ {{ products.price }}</h5>
-            <h6>{{ products.description }}</h6>
+            <div class="text-left pl-5">
+                <h4 class="">{{ products.name }}</h4>
+                <a class="d-block" href="/{{ products.category }}/{{ products.manufacturer}}"><h5 class="text-info">{{ products.manufacturer }}</h5></a>
+                <h5>$ {{ products.price }}</h5>
+                <h6>{{ products.description }}</h6>
 
-        {% if user.is_authenticated %}
-            <button class= "btn btn-info align-self-end" onclick="addToCart({{ product.id }})" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
-        {% endif %}
+                {% if user.is_authenticated %}
+                    <button class= "btn btn-info align-self-end" onclick="addToCart({{ product.id }})" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+                {% endif %}
+            </div>
     </div>
 {% endblock %}
