@@ -28,8 +28,7 @@ def CheckoutView(request):
     if request.method == 'POST':
         form = ChekcoutForm(data=request.POST)
         if form.is_valid():
-            body_unicode = request.body.decode('utf-8')
-            body = dict((dataString.split("=") for dataString in body_unicode.split("&") if dataString))
+
             return render(request, 'payment/review.html', context)
 
     return render(request, 'payment/checkout.html', context)
@@ -39,6 +38,7 @@ def ReviewView(request):
     body_unicode = request.body.decode('utf-8')
     body = dict((dataString.split("=") for dataString in body_unicode.split("&") if dataString))
     context = {'paymentInfo': body}
+    print(context)
     return render(request, 'payment/review.html', context)
 
 @login_required()
