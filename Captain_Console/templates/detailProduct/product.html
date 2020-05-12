@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container w-md-50">
+    <div class="container shadow border w-md-50">
         <div class="row no-gutter">
-            <div class="col-sm-12 col-md text-md-right text-sm-center text-center">
+            <div class="col-sm-12 col-md text-center">
             {% for productsImage in products.productimages_set.all %}
                 <img class="w-50"  src="{{ productsImage.image }}" alt="img" />
             {% endfor %}
