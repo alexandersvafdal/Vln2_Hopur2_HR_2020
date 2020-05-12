@@ -137,5 +137,5 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_URL = 'user/login'
-LOGIN_REDIRECT_URL = '/user/profile' # TODO: Change this to the home page. like -> '/'
+LOGIN_REDIRECT_URL = '/'
 

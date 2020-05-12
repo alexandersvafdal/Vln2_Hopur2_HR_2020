@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
 from Captain.models import Products
 from user.models import Profile
@@ -72,21 +73,28 @@ def deleteFromCart(request):
 
 @login_required
 def shoppingCartData(request):
-    currentUserId = str(request.user.id)
-    user = Profile.objects.get(user_id=currentUserId)
-    userCart = json.loads(user.cart)
+    try:
+        currentUserId = str(request.user.id)
 
 
-    products = Products.objects.all().filter(id__in=userCart.keys())
+
+        user = Profile.objects.get(user_id=currentUserId)
+        userCart = json.loads(user.cart)
 
 
-    data = []
-    cartTotal = 0
-    for key, value in userCart.items():
-        product = products.get(id=key)
-        total = float(product.price) * int(value)
-        cartTotal += total
-        data.append({"qty": value, "data": product, "total": total})
-    dictData = {'cartitems': data, 'cartTotal': cartTotal}
+        products = Products.objects.all().filter(id__in=userCart.keys())
 
-    return render(request, 'shoppingCart/shoppingCartProducts.html', dictData)
+
+        data = []
+        cartTotal = 0
+        for key, value in userCart.items():
+            product = products.get(id=key)
+            total = float(product.price) * int(value)
+            cartTotal += total
+            data.append({"qty": value, "data": product, "total": total})
+        dictData = {'cartitems': data, 'cartTotal': cartTotal}
+
+        return render(request, 'shoppingCart/shoppingCartProducts.html', dictData)
+
+    except (ObjectDoesNotExist):
+        return render(request, 'failedLogIn/failedLogIn.html')

@@ -2,13 +2,12 @@
 {% block content %}
     <div class="container m-auto">
         <div class="row">
-            <div class="col-md-5 col-lg-5 col-xl-5 m-5 bg-secondary border">
+            <div class="col-md-5 col-lg-5 col-xl-5 m-5 bg-secondary border rounded">
                 <h1>Change Profile</h1>
-                <h4>For first time users, please fill in either name and or image for the cart and other features to work</h4>
                 <form class="form form-horizontal" method="post" >
                     {% csrf_token %}
                     {{ form }}
-                    <input type="submit" class="btn btn-primary m-2" value="Update"/>
+                    <input type="submit" class="btn btn-primary mt-2 mb-2" value="Update"/>
                     {{ form.errors }}
                 </form>
             </div>

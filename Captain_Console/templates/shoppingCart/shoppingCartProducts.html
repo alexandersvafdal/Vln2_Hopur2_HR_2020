@@ -2,6 +2,7 @@
 
 {% block content %}
 
+    {% if cartitems %}
 {% for item in cartitems %}
     <ul class="list-group">
     {% if user.is_authenticated %}
@@ -21,5 +22,8 @@
             <br>
             <a class="btn btn-success" href="{% url "checkout-index" %}" role="button">Checkout</a>
 
+        {% else %}
+            <h2 class="alert alert-dark">There are no items in your cart</h2>
+{% endif %}
 
 {% endblock %}
