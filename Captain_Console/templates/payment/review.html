@@ -3,9 +3,9 @@
 
 {% block content %}
 
-    <div>{{ paymentInfo.firstName }} {{ paymentInfo.lastName }}</div>
+    <div>{{ paymentInfo.firstName }} {{ paymentInfo.lastName }} email: {{ paymentInfo.email }}</div>
     <div>
-    <p>Cart total: {{ cartTotal }}</p>
+    <p>Cart total: {{ paymentInfo.cart.orderTotal }}</p>
     <a href="{% url 'order-success' %}" class="btn btn-primary">Confirm</a>
 </div>
 
