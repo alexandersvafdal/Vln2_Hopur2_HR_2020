@@ -3,20 +3,23 @@
 {% block content %}
 
 {% for item in cartitems %}
-    <ul>
+    <ul class="list-group">
     {% if user.is_authenticated %}
-
-        <li>{{ item.data.name }} : {{ item.qty }} : {{ item.data.price }} - Total: {{ item.total }}</li>
-        <button onclick="deleteFromCart({{ item.data.id }});" ><i class="fa fa-trash" aria-hidden="true"></i></button>
-
+        <li class="list-group-item align-items-center justify-content-between">
+            <a href="/{{ item.data.pk }}">{{ item.data.name }}</a> Total Price: {{ item.total }}
+            <span class="badge badge-primary badge-pill">{{ item.qty }}</span>
+            <button onclick="deleteFromCart({{ item.data.id }});" class="btn btn btn-outline-danger btn-sm float-right" >
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+        </li>
     {% endif  %}
     </ul>
 
 {% endfor %}
+    <br>
+            <h3 class="">Total: $ {{ cartTotal }}</h3>
+            <br>
+            <a class="btn btn-success" href="{% url "checkout-index" %}" role="button">Checkout</a>
 
-<div>
-    <p>Cart total: {{ cartTotal }}</p>
-</div>
 
-<button onclick="" ><a  href="{% url 'checkout-index' %}">Checkout</a></button>
 {% endblock %}

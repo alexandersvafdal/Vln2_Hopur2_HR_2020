@@ -16,7 +16,7 @@
                 <h6>{{ products.description }}</h6>
 
                 {% if user.is_authenticated %}
-                    <button class= "btn btn-info pull-left" onclick="addToCart({{ product.id }})" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+                    <button class= "btn btn-outline-info pull-left" onclick="addToCart({{ product.id }})" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
                 {% endif %}
             </div>
 

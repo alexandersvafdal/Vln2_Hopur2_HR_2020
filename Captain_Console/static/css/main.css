@@ -27,8 +27,15 @@ object-fit: cover;
 height: 300px;
 }
 
+.noUnderline{
+    text-decoration: none; !important;
+    color: white; !important;
+}
 
-
+ul li a{
+    text-decoration: none;
+    color: black;
+}
 
 
 

@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from Checkout.forms.checkout_form import ChekcoutForm
 from user.models import Profile
-import json
+from .models import Orders
 from Captain.models import Products
 from django.contrib.auth.decorators import login_required
-
+import json
 
 # Create your views here.
 
@@ -28,17 +28,27 @@ def CheckoutView(request):
     if request.method == 'POST':
         form = ChekcoutForm(data=request.POST)
         if form.is_valid():
-            body_unicode = request.body.decode('utf-8')
-            body = dict((dataString.split("=") for dataString in body_unicode.split("&") if dataString))
+            relform = request.POST
+            formBody = Orders(
+                user=user,
+                firstName=relform['firstName'],
+                lastName=relform['lastName'],
+                email=relform['email'],
+                city=relform['city'],
+                zip=relform['zip'],
+                country=relform['country'],
+                cart=Profile.objects.get(pk=currentUserId)
+            )
+            cartItems = {'items': cart, 'orderTotal': orderTotal}
+            context = {'paymentInfo': formBody, 'cart': cartItems}
             return render(request, 'payment/review.html', context)
 
     return render(request, 'payment/checkout.html', context)
 
 @login_required()
 def ReviewView(request):
-    body_unicode = request.body.decode('utf-8')
-    body = dict((dataString.split("=") for dataString in body_unicode.split("&") if dataString))
-    context = {'paymentInfo': body}
+
+
     return render(request, 'payment/review.html', context)
 
 @login_required()
