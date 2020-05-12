@@ -21,25 +21,14 @@ nav a{
     width: 100%;
 }
 
-div div div div button{
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-}
-
 .fit-image{
 width: 100%;
 object-fit: cover;
-height: 300px; /* only if you want fixed height */
+height: 300px;
 }
 
 
-.footer{
-  clear: both;
-    position: relative;
-    height: 200px;
-    margin-top: -200px;
-}
+
 
 
 

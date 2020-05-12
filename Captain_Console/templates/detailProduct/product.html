@@ -1,22 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container text-center">
-
-            <div class="container mx-auto">
+    <div class="container w-50">
+        <div class="row no-gutter">
+            <div class="col text-right">
             {% for productsImage in products.productimages_set.all %}
-                <img class="w-25 m-2 float-left"  src="{{ productsImage.image }}" alt="img" />
+                <img class="w-50"  src="{{ productsImage.image }}" alt="img" />
             {% endfor %}
             </div>
-            <div class="text-left pl-5">
+
+            <div class="text-left col">
                 <h4 class="">{{ products.name }}</h4>
                 <a class="d-block" href="/{{ products.category }}/{{ products.manufacturer}}"><h5 class="text-info">{{ products.manufacturer }}</h5></a>
                 <h5>$ {{ products.price }}</h5>
                 <h6>{{ products.description }}</h6>
 
                 {% if user.is_authenticated %}
-                    <button class= "btn btn-info align-self-end" onclick="addToCart({{ product.id }})" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+                    <button class= "btn btn-info pull-left" onclick="addToCart({{ product.id }})" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
                 {% endif %}
             </div>
+
+        </div>
     </div>
 {% endblock %}
