@@ -2,42 +2,46 @@
 {% load i18n %}
 
 {% block content %}
-
-    <h1>{% trans "Your Order" %}</h1>
-    <div>
-        <p>First Name: {{ paymentInfo.firstName }}</p>
-        <p>Last Name: {{ paymentInfo.lastName }}</p>
-        <p>Email: {{ paymentInfo.email }}</p>
-        <p>City: {{ paymentInfo.city}}      Zip: {{ paymentInfo.zip }}</p>
-        <p>Country: {{ paymentInfo.country}}</p>
-    </div>
-
-    <div>
-        <p>Name: {{ cardInfo.cardName }}</p>
-        <p>Card ending in {{ cardInfo.cardNumber }}</p>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4 order-md-2 mb-4">
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Your cart</span>
-          </h4>
-          {% for item in cart.items %}
-          <ul class="list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">{{ item.product.name }}</h6>
-                <small>Quantity: {{ item.qty }}</small>
-              </div>
-              <span class="text-muted">${{ item.total }}</span>
-            </li>
-          </ul>
-          {% endfor %}
-          <span class="badge badge-secondary badge-pill">Total: ${{ cart.orderTotal }}</span>
+    <form action="{% url 'review' %}" method="POST">
+        {% csrf_token %}
+        <h1>{% trans "Your Order" %}</h1>
+        <div>
+            <p>First Name: {{ paymentInfo.firstName }}</p>
+            <p>Last Name: {{ paymentInfo.lastName }}</p>
+            <p>Email: {{ paymentInfo.email }}</p>
+            <p>City: {{ paymentInfo.city}}      Zip: {{ paymentInfo.zip }}</p>
+            <p>Country: {{ paymentInfo.country}}</p>
         </div>
 
-    <div>
-    <a href="{% url 'order-success' %}" class="btn btn-primary">Confirm</a>
-    </div>
+        <div>
+            <p>Name: {{ cardInfo.cardName }}</p>
+            <p>Card ending in {{ cardInfo.cardNumber }}</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 order-md-2 mb-4">
+              <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+              </h4>
+              {% for item in cart.items %}
+              <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <h6 class="my-0">{{ item.product.name }}</h6>
+                    <small>Quantity: {{ item.qty }}</small>
+                  </div>
+                  <span class="text-muted">${{ item.total }}</span>
+                </li>
+              </ul>
+              {% endfor %}
+              <span class="badge badge-secondary badge-pill">Total: ${{ cart.orderTotal }}</span>
+            </div>
+
+            <div>
+
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </form>
 
 {% endblock %}

@@ -6,9 +6,8 @@
     {% if queries %}
     <div class="mb-2">
         {% for query in queries %}
-            <li class="list-group-item align-items-center justify-content-between">
-                <a class="" href="/search/?search={{query.query}}">{{query.query}}</a>
-                <div>{{ query.date }}</div>
+            <li class=" list-group-item align-items-center justify-content-between">
+                <div><a class="text-secondary" href="/search/?search={{query.query}}">{{query.query}}</a><div class="float-right"> {{ query.date }}</div></div>
             </li>
         {% endfor %}
     </div>
@@ -17,5 +16,5 @@
         <p>You have no search history</p>
     </div>
     {% endif %}
-    <button onclick="" ><a  href="{% url 'deleteHistory' %}">Delete History</a></button>
+    <a class="btn btn-danger" href="{% url 'deleteHistory' %}">Delete History</a>
 {% endblock %}

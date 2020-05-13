@@ -52,7 +52,6 @@ def PaymentView(request):
         user = Profile.objects.get(user_id=currentUserId)
         userCart = json.loads(user.cart)
         products = Products.objects.all().filter(id__in=userCart.keys())
-
         cart = []
         orderTotal = 0
         for key, value in userCart.items():
@@ -84,23 +83,27 @@ def PaymentView(request):
 def ReviewView(request):
     formData = request.session.get('formFilled', False)
     cartOrder = request.session.get('cartOrder', False)
-    if formData != False and cartOrder != False:
+
+    if formData and cartOrder:
 
         if request.method == 'POST':
             user = User.objects.filter(id=request.user.id).first()
-            cart = cartOrder
-            formInfo = formData.paymentInfo
+            formInfo = formData['paymentInfo']
             form = Orders(
                 user=user,
-                firstName=formInfo.firstName,
-                lastName=formInfo.lastName,
-                email=formInfo.email,
-                city=formInfo.city,
-                zip=formInfo.zip,
-                country=formInfo.country,
-                cart=cart,
+                firstName=formInfo['firstName'],
+                lastName=formInfo['lastName'],
+                email=formInfo['email'],
+                city=formInfo['city'],
+                zip=formInfo['zip'],
+                country=formInfo['country'],
+                cart=cartOrder
                 )
+
             form.save()
+            profileUser = Profile.objects.get(user_id=request.user.id)
+            profileUser.cart = "{}"
+            profileUser.save()
             return redirect('order-success')
 
         return render(request, 'payment/review.html')
