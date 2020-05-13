@@ -7,7 +7,8 @@
     <div class="mb-2">
         {% for query in queries %}
             <li class="list-group-item align-items-center justify-content-between">
-                <a class="noUnderline" href="/search/?search={{query.query}}">{{query.query}}</a>
+                <a class="" href="/search/?search={{query.query}}">{{query.query}}</a>
+                <div>{{ query.date }}</div>
             </li>
         {% endfor %}
     </div>

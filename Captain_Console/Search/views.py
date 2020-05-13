@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from Captain.models import Products
 from Search.models import SearchQuery
-
+from datetime import datetime
 
 # Create your views here.
 def SearchResultsView(request):
@@ -20,7 +20,9 @@ def SearchResultsView(request):
             allQueries = SearchQuery.objects.filter(user=user.id, query=query)
 
             if (len(allQueries) == 0):
-                searchText = SearchQuery(query=query, user=user)
+                now = datetime.now()
+                now = now.strftime("%d/%m/%Y %H:%M")
+                searchText = SearchQuery(query=query, date=now, user=user)
                 searchText.save()
 
         return render(request, 'searchResult/search_results.html', context)
