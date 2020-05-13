@@ -2,7 +2,6 @@
 
 
 function addToCart(productId) {
-
   $.ajax({
     url:            "/cart/addto",
     type:           'POST',
@@ -18,6 +17,20 @@ function addToCart(productId) {
 
     }
   });
+}
+
+function addedToCart(){
+  const elem = document.getElementById('addedToCartDiv');
+  elem.classList.toggle('d-none');
+  elem.style.opacity = 1;
+  (function fade(){(elem.style.opacity-=.1)<0?elem.classList.toggle('d-none'):setTimeout(fade,250)})();
+}
+
+function addedToCartHome(){
+  const elem = document.getElementById('addedToCartDivHome');
+  elem.classList.toggle('d-none');
+  elem.style.opacity = 1;
+  (function fade(){(elem.style.opacity-=.1)<0?elem.classList.toggle('d-none'):setTimeout(fade,250)})();
 }
 
 function deleteFromCart(productId) {

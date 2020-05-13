@@ -37,13 +37,17 @@
                             <h5 >$ {{ product.price }}</h5>
                         </a>
                             {% if user.is_authenticated %}
-                                <button class= "btn btn-outline-info float-right" onclick="addToCart({{ product.id }})" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+                                <button class= "btn btn-outline-info float-right" onclick="addToCart({{ product.id }}); addedToCartHome()" type="submit"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
                             {% endif %}
+
                     </div>
         {% endfor %}
+
             </div>
         </div>
+
     </div>
+    <div id="addedToCartDivHome" class="pull-right alert alert-success d-none"><i class="fa fa-cart-plus mr-2"></i>Item has been added to cart</div>
 
 
 
