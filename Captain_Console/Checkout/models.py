@@ -11,5 +11,5 @@ class Orders(models.Model):
     city = models.CharField(max_length=255)
     zip = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
-    cart = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    cart = models.CharField(max_length=9999999, default="{}")
 

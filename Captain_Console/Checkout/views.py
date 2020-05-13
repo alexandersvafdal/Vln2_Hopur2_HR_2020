@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from Checkout.forms.checkout_form import CheckoutForm, PaymentForm
+from django.contrib.auth.models import User
 from user.models import Profile
 from .models import Orders
 from Captain.models import Products
@@ -17,59 +18,96 @@ def CheckoutView(request):
     products = Products.objects.all().filter(id__in=userCart.keys())
 
     cart = []
+    cartDict = {}
     orderTotal = 0
     for key, value in userCart.items():
         product = products.get(id=key)
         total = float(product.price) * int(value)
         orderTotal += total
         cart.append({"qty": value, "product": product, "total": total})
+        cartDict[key] = value
 
     context = {'form': CheckoutForm, 'cartItems': cart, 'orderTotal': orderTotal}
 
     if request.method == 'POST':
         form = CheckoutForm(data=request.POST)
         if form.is_valid():
-            cartItems = {'items': cart, 'orderTotal': orderTotal}
-            context = {'paymentInfo': form.cleaned_data, 'cart': cartItems}
-            print(form.cleaned_data)
-            return render(request, 'payment/payment.html', context)
 
+            formData = {'paymentInfo': form.cleaned_data}
+            request.session['formFilled'] = formData
+            request.session['cartOrder'] = cartDict
+            return redirect('payment-index')
 
     return render(request, 'payment/checkout.html', context)
 
+
 @login_required()
 def PaymentView(request):
-    currentUserId = str(request.user.id)
-    user = Profile.objects.get(user_id=currentUserId)
-    userCart = json.loads(user.cart)
-    products = Products.objects.all().filter(id__in=userCart.keys())
+    formData = request.session.get('formFilled', False)
 
-    cart = []
-    orderTotal = 0
-    for key, value in userCart.items():
-        product = products.get(id=key)
-        total = float(product.price) * int(value)
-        orderTotal += total
-        cart.append({"qty": value, "product": product, "total": total})
+    if formData != False:
+        context = {'form': PaymentForm}
 
-    context = {'form': PaymentForm, 'cartItems': cart, 'orderTotal': orderTotal}
+        currentUserId = str(request.user.id)
+        user = Profile.objects.get(user_id=currentUserId)
+        userCart = json.loads(user.cart)
+        products = Products.objects.all().filter(id__in=userCart.keys())
 
-    if request.method == 'POST':
-        form = PaymentForm(data=request.POST)
-        if form.is_valid():
-            cartItems = {'items': cart, 'orderTotal': orderTotal}
-            context = {'paymentInfo': form.cleaned_data, 'cart': cartItems}
-            return render(request, 'payment/review.html', context)
+        cart = []
+        orderTotal = 0
+        for key, value in userCart.items():
+            product = products.get(id=key)
+            total = float(product.price) * int(value)
+            orderTotal += total
+            cart.append({"qty": value, "product": product, "total": total})
 
-    return render(request, 'payment/payment.html', context)
+        cartItems = {'items': cart, 'orderTotal': orderTotal}
+
+        if request.method == 'POST':
+            form = PaymentForm(data=request.POST)
+            if form.is_valid():
+                cardAllInfo = form.cleaned_data
+                name = cardAllInfo['cardName']
+                number = cardAllInfo['cardNumber']
+                cardInfo = {'cardName': name, 'cardNumber': number[-4:]}
+                context = {'paymentInfo': formData['paymentInfo'], 'cardInfo': cardInfo, 'cart': cartItems}
+
+                return render(request, 'payment/review.html', context)
+
+        return render(request, 'payment/payment.html', context)
+
+    else:
+        return redirect('checkout-index')
+
 
 @login_required()
 def ReviewView(request):
-    form = ChekcoutForm(data=request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('order-success')
-    return render(request, 'payment/review.html')
+    formData = request.session.get('formFilled', False)
+    cartOrder = request.session.get('cartOrder', False)
+    if formData != False and cartOrder != False:
+
+        if request.method == 'POST':
+            user = User.objects.filter(id=request.user.id).first()
+            cart = cartOrder
+            formInfo = formData.paymentInfo
+            form = Orders(
+                user=user,
+                firstName=formInfo.firstName,
+                lastName=formInfo.lastName,
+                email=formInfo.email,
+                city=formInfo.city,
+                zip=formInfo.zip,
+                country=formInfo.country,
+                cart=cart,
+                )
+            form.save()
+            return redirect('order-success')
+
+        return render(request, 'payment/review.html')
+
+    else:
+        return redirect('checkout-index')
+
 
 @login_required()
 def SuccessView(request):
