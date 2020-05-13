@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from Checkout.forms.checkout_form import ChekcoutForm
+from Checkout.forms.checkout_form import CheckoutForm
+from Checkout.forms.payment_form import PaymentForm
 from user.models import Profile
 from .models import Orders
 from Captain.models import Products
@@ -33,6 +34,7 @@ def CheckoutView(request):
             context = {'paymentInfo': form.cleaned_data, 'cart': cartItems}
             print(form.cleaned_data)
             return render(request, 'payment/review.html', context)
+
 
     return render(request, 'payment/checkout.html', context)
 

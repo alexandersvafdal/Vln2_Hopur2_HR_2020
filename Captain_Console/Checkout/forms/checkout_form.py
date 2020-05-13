@@ -1,7 +1,7 @@
 from django import forms
 from django_countries.fields import CountryField
 
-class ChekcoutForm(forms.Form):
+class CheckoutForm(forms.Form):
     firstName = forms.CharField()
     lastName = forms.CharField()
     email = forms.CharField(widget=forms.TextInput(attrs={
