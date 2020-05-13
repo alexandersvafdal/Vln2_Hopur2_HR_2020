@@ -37,6 +37,12 @@ ul li a{
     color: black;
 }
 
+#addedToCartDivHome{
+    position: absolute;
+    top: 4rem;
+    right: 4rem;
+}
+
 
 
 
