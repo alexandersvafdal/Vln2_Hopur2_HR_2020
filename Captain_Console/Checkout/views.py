@@ -5,6 +5,7 @@ from .models import Orders
 from Captain.models import Products
 from django.contrib.auth.decorators import login_required
 import json
+from formtools.preview import FormPreview
 
 # Create your views here.
 
@@ -28,28 +29,19 @@ def CheckoutView(request):
     if request.method == 'POST':
         form = ChekcoutForm(data=request.POST)
         if form.is_valid():
-            relform = request.POST
-            formBody = Orders(
-                user=user,
-                firstName=relform['firstName'],
-                lastName=relform['lastName'],
-                email=relform['email'],
-                city=relform['city'],
-                zip=relform['zip'],
-                country=relform['country'],
-                cart=Profile.objects.get(pk=currentUserId)
-            )
-            cartItems = {'items': cart, 'orderTotal': orderTotal}
-            context = {'paymentInfo': formBody, 'cart': cartItems}
-            return render(request, 'payment/review.html', context)
+            FormPreview.done(request, form.cleaned_data)
+            # cartItems = {'items': cart, 'orderTotal': orderTotal}
+            # context = {'paymentInfo': form, 'cart': cartItems}
+            # return render(request, 'payment/review.html', context)
 
     return render(request, 'payment/checkout.html', context)
 
 @login_required()
 def ReviewView(request):
-
-
-    return render(request, 'payment/review.html', context)
+    form = ChekcoutForm(data=request.POST)
+    if form.is_valid():
+        form.save()
+        return render(request, 'payment/success.html')
 
 @login_required()
 def SuccessView(request):

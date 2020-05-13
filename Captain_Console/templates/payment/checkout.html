@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+{% load i18n %}
+
 <div class="container">
 
   <div class="py-5 text-center">
@@ -26,11 +28,18 @@
       <span class="badge badge-secondary badge-pill">Total: ${{ orderTotal }}</span>
     </div>
 
-    <form method="post" action="review" class="form form-horizontal" >
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" class="btn btn-primary" value="Continue to Checkout" />
-        {{ form.errors }}
+    {% if form.errors %}
+    <h1>{% trans "Please correct the following errors" %}</h1>
+    {% else %}
+    <h1>{% trans "Checkout" %}</h1>
+    {% endif %}
+
+    <form action="" method="post">{% csrf_token %}
+    <table>
+    {{ form }}
+    </table>
+    <input type="hidden" name="{{ stage_field }}" value="1" />
+    <p><input type="submit" value="{% trans "Continue" %}" /></p>
     </form>
 
   </div>
