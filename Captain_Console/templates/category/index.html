@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <div class="filter-content float-left m-3">
+    <div class="filter-content float-md-left m-3">
             <div class="card-body captain">
                 <h3>Filter</h3>
                 <ul class="list-unstyled">
@@ -17,8 +17,8 @@
                 <h3>Sort by</h3>
                 <ul class="list-unstyled">
                     <li><a class="text-white" href="name">A-Z</a></li>
-                    <li><a class="text-white" href="price-DESC">Price Low - High</a></li>
-                    <li><a class="text-white" href="price-ASC">Price High - Low</a></li>
+                    <li><a class="text-white" href="price-DESC">Price High - Low</a></li>
+                    <li><a class="text-white" href="price-ASC">Price Low - High</a></li>
                 </ul>
             </div>
     </div>
@@ -28,7 +28,7 @@
         <div class="container">
                 <div class = "row">
         {% for product in products %}
-                    <div class="col-md-3 col-lg-3 col-xl-3 m-3 p-2 shadow rounded">
+                    <div class="col-12 col-md-5 col-lg-5 col-xl-3 m-3 p-2 shadow rounded">
                         <a  class="text-primary" href="/{{ product.id }}">
                             <div class="m-1">
                                 <img class="fit-image" src="{{ product.productimages_set.first.image }}" alt="img" />
