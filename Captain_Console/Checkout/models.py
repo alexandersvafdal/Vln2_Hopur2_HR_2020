@@ -12,4 +12,3 @@ class Orders(models.Model):
     zip = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
     cart = models.ForeignKey(Profile, on_delete=models.CASCADE)
-#ToDo: Save to database - Items ordered and connect to user

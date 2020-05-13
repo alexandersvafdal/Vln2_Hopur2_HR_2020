@@ -11,8 +11,10 @@ class ChekcoutForm(forms.Form):
         'placeholder': 'Street 123'
     }))
     city = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'City'
+        'placeholder': 'CityName'
     }))
-    zip = forms.CharField()
+    zip = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': '111'
+    }))
     country = CountryField(blank_label='Select country').formfield()
 

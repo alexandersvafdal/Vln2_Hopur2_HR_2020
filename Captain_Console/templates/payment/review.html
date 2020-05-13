@@ -4,30 +4,35 @@
 {% block content %}
 
     <h1>{% trans "Your Order" %}</h1>
+    <div>
+        <p>First Name: {{ paymentInfo.firstName }}</p>
+        <p>Last Name: {{ paymentInfo.lastName }}</p>
+        <p>Email: {{ paymentInfo.email }}</p>
+        <p>City: {{ paymentInfo.city}}      Zip: {{ paymentInfo.zip }}</p>
+        <p>Country: {{ paymentInfo.country}}</p>
+    </div>
 
-    <table>
-    {% for field in form %}
-    <tr>
-    <th>{{ field.label }}:</th>
-    <td>{{ field.data }}</td>
-    </tr>
-    {% endfor %}
-    </table>
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your cart</span>
+          </h4>
+          {% for item in cart.items %}
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">{{ item.product.name }}</h6>
+                <small>Quantity: {{ item.qty }}</small>
+              </div>
+              <span class="text-muted">${{ item.total }}</span>
+            </li>
+          </ul>
+          {% endfor %}
+          <span class="badge badge-secondary badge-pill">Total: ${{ cart.orderTotal }}</span>
+        </div>
 
-    <form action="" method="post">{% csrf_token %}
-    {% for field in form %}{{ field.as_hidden }}
-    {% endfor %}
-    <input type="hidden" name="{{ stage_field }}" value="2" />
-    <input type="hidden" name="{{ hash_field }}" value="{{ hash_value }}" />
-    <p><input type="submit" value="{% trans "Confirm" %}" /></p>
-    </form>
+    <div>
+    <a href="{% url 'order-success' %}" class="btn btn-primary">Confirm</a>
+    </div>
 
-<!--    <div>{{ paymentInfo.firstName }} {{ paymentInfo.lastName }} email: {{ paymentInfo.email }}</div>-->
-<!--    <div>-->
-<!--    <p>Cart total: {{ paymentInfo.cart.orderTotal }}</p>-->
-<!--    <a href="{% url 'order-success' %}" class="btn btn-primary">Confirm</a>-->
-<!--</div>-->
-
-<!--&lt;!&ndash;<button onclick="" ><a  href="{% url 'checkout-index' %}">Checkout</a></button>&ndash;&gt;-->
-<!--<input type="submit" class="btn btn-primary" value="Confirm" />-->
 {% endblock %}

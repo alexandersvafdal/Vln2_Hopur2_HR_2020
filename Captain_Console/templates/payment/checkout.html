@@ -28,6 +28,7 @@
       <span class="badge badge-secondary badge-pill">Total: ${{ orderTotal }}</span>
     </div>
 
+  <div>
     {% if form.errors %}
     <h1>{% trans "Please correct the following errors" %}</h1>
     {% else %}
@@ -38,9 +39,9 @@
     <table>
     {{ form }}
     </table>
-    <input type="hidden" name="{{ stage_field }}" value="1" />
-    <p><input type="submit" value="{% trans "Continue" %}" /></p>
+    <input type="submit" class="btn btn-primary mt-2 mb-2" value="Continue"/>
     </form>
+  </div>
 
   </div>
 </div>

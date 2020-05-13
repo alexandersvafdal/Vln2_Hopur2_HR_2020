@@ -29,10 +29,10 @@ def CheckoutView(request):
     if request.method == 'POST':
         form = ChekcoutForm(data=request.POST)
         if form.is_valid():
-            FormPreview.done(request, form.cleaned_data)
-            # cartItems = {'items': cart, 'orderTotal': orderTotal}
-            # context = {'paymentInfo': form, 'cart': cartItems}
-            # return render(request, 'payment/review.html', context)
+            cartItems = {'items': cart, 'orderTotal': orderTotal}
+            context = {'paymentInfo': form.cleaned_data, 'cart': cartItems}
+            print(form.cleaned_data)
+            return render(request, 'payment/review.html', context)
 
     return render(request, 'payment/checkout.html', context)
 
@@ -41,7 +41,8 @@ def ReviewView(request):
     form = ChekcoutForm(data=request.POST)
     if form.is_valid():
         form.save()
-        return render(request, 'payment/success.html')
+        return redirect('order-success')
+    return render(request, 'payment/review.html')
 
 @login_required()
 def SuccessView(request):
