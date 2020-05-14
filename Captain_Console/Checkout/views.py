@@ -37,7 +37,6 @@ def CheckoutView(request):
             request.session['formFilled'] = formData
             request.session['cartOrder'] = cartDict
             return redirect('payment-index')
-
     return render(request, 'payment/checkout.html', context)
 
 
@@ -76,6 +75,7 @@ def PaymentView(request):
         return render(request, 'payment/payment.html', context)
 
     else:
+        print("error redirect")
         return redirect('checkout-index')
 
 
