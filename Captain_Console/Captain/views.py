@@ -13,3 +13,6 @@ def index(request):
 class DetailView(generic.DetailView):
     model = Products
     template_name = 'detailProduct/product.html'
+
+
+
