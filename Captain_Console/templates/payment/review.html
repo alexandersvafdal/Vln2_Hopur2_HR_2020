@@ -9,40 +9,13 @@
 <!--<th>Country: {{ paymentInfo.country}}</th>-->
 
 {% block content %}
+<div class="text-center">
     <form action="{% url 'review' %}" method="POST">
         {% csrf_token %}
-        <h1>{% trans "Your Order" %}</h1>
-        <div>
-            <table class="table table-responsive">
-                <thead>
-                    <tc>
-                        <th>First Name:</th>
-                        <th>Last Name:</th>
-                        <th>Email:</th>
-                        <th>City:</th>
-                        <th>Zip:</th>
-                        <th>Country:</th>
-                    </tc>
-                </thead>
-                <tbody>
-                    <tc>
-                        <td>{{ paymentInfo.firstName }}</td>
-                        <td>{{ paymentInfo.lastName }}</td>
-                        <td>{{ paymentInfo.email }}</td>
-                        <td>{{ paymentInfo.city}}</td>
-                        <td>{{ paymentInfo.zip }}</td>
-                        <td>{{ paymentInfo.country}}</td>
-                    </tc>
-                </tbody>
-            </table>
-        </div>
-
-        <div>
-            <p>Name: {{ cardInfo.cardName }}</p>
-            <p>Card ending in {{ cardInfo.cardNumber }}</p>
-        </div>
+        <h2>{% trans "Your Order" %}</h2>
 
         <div class="row">
+
             <div class="col-md-4 order-md-2 mb-4">
               <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Your cart</span>
@@ -58,14 +31,65 @@
                 </li>
               </ul>
               {% endfor %}
-              <span class="badge badge-secondary badge-pill">Total: ${{ cart.orderTotal }}</span>
+                <h2><span class="badge badge-secondary badge-pill">Total: ${{ cart.orderTotal }}</span></h2>
             </div>
 
-            <div>
-
-                    <button type="submit" class="btn btn-primary">Confirm</button>
+            <div class="col-md-6 order-md-2 mb-4 p-0">
+                <div class="row justify-content-center">
+                    <div class="col-auto " >
+                        <h2 class="mb-3">Information</h2>
+                        <table class="table table-responsive">
+                            <tbody>
+                                <tr>
+                                    <th>First Name:</th>
+                                    <td>{{ paymentInfo.firstName }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Last Name:</th>
+                                    <td>{{ paymentInfo.lastName }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email:</th>
+                                    <td>{{ paymentInfo.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>City:</th>
+                                    <td>{{ paymentInfo.city}}</td>
+                                </tr>
+                                    <tr><th>Zip:</th>
+                                    <td>{{ paymentInfo.zip }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Country:</th>
+                                    <td>{{ paymentInfo.country }}</td>
+                                </tr>
+                                <tr>
+                                    <th>-</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>Name: </th>
+                                    <td>{{ cardInfo.cardName }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Card ending in:</th>
+                                    <td>{{ cardInfo.cardNumber }}</td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <button type="submit" class="btn btn-primary mt-2 mb-2 float-right">Confirm</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </form>
 
+
+    </form>
+</div>
 {% endblock %}
