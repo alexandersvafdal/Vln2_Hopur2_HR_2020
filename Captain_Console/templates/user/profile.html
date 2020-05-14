@@ -12,10 +12,19 @@
                 </form>
             </div>
 
-            <div class="mh-100 mw-100 float-right col-md-5 col-lg-5 col-xl-5 m-5  bg-secondary border border-info" >
-                <img src="{{ user.profile.profile_image }}" class="profile-image rounded m-2"/>
-                <div>{{ user.profile.name }}</div>
+            <div class="text-center card-box col-md-5 col-lg-5 col-xl-5 m-5">
+                <div class="member-card">
+                    <div class="thumb-xl member-thumb m-b-10 center-block">
+                        <img src="{{ user.profile.profile_image }}" class="img-circle img-thumbnail" alt="profile-image">
+                    </div>
+
+                    <div class="">
+                        <h4 class="m-b-5">{{ user.profile.FirstName }} {{ user.profile.LastName }}</h4>
+                    </div>
+                </div>
             </div>
+
+
         </div>
     </div>
 {% endblock %}
