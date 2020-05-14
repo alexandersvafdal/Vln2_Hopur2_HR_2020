@@ -41,9 +41,13 @@ def manfacturer(request, param):
             'allManufacturers': allManufacturers, 'categoryName': 'games'}
          return render(request, 'category/index.html', context)
 
+
     else:
         context = {'products': Products.objects.filter(category__name="games").filter(manufacturer=param).order_by('name'),
                'allManufacturers': allManufacturers, 'categoryName': 'games'}
-
-        return render(request, 'category/index.html', context)
-
+        howManyObjectsRet = len(Products.objects.filter(category__name="games").filter(manufacturer=param).order_by('name'))
+        if howManyObjectsRet > 0:
+            return render(request, 'category/index.html', context)
+        else:
+            context = {"categoryName": "games"}
+            return render(request, 'category/pagenotfound.html', context)
