@@ -1,35 +1,75 @@
 from django import forms
+from Checkout.models import Orders, Payment
 from django.core.validators import MinLengthValidator, int_list_validator
 import datetime
 from django_countries.fields import CountryField
 
-class CheckoutForm(forms.Form):
-    firstName = forms.CharField()
-    lastName = forms.CharField()
-    email = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'you@example.com'
-    }))
-    address = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'Street 123'
-    }))
-    city = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'CityName'
-    }))
-    zip = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': '111'
-    }))
-    country = CountryField(blank_label='Select country').formfield()
+class CheckoutForm(forms.ModelForm):
+    class Meta:
+        model = Orders
+        exclude = ['id', 'user', 'cart']
+        fields = [
+            'firstName',
+            'lastName',
+            'email',
+            'city',
+            'zip',
+            'country',
+        ]
 
 
 
-class PaymentForm(forms.Form):
-    cardName = forms.CharField(max_length=255)
-    cardNumber = forms.CharField(max_length=16, min_length=16)
-    expirationDate = forms.DateField()
-    CVC = forms.CharField(max_length=3, min_length=3)
+class PaymentForm(forms.ModelForm):
+    class Meta:
+        model = Payment
+        fields = [
+            'cardName',
+            'cardNumber',
+            'expirationDate',
+            'CVC',
+        ]
 
-    def clean_date(self):
+
+    def clean_expirationDate(self):
         expirationDate = self.cleaned_data['expirationDate']
-        if expirationDate < datetime.date.today():
-            raise forms.ValidationError("The date cannot be in the past!")
-        return expirationDate
+
+        try:
+            month, year = expirationDate.split('/')
+            now = datetime.datetime.now()
+            monthNow = now.month
+            yearNow = now.year
+
+            if int(month) < monthNow or int(year) < (yearNow - 2000):
+                raise forms.ValidationError("This date has expired")
+
+            return expirationDate
+
+        except ValueError:
+            raise forms.ValidationError("Date needs to be in format 'mm/yy'")
+
+
+
+    def clean_cardNumber(self):
+        cardNumber = self.cleaned_data['cardNumber']
+
+        if len(cardNumber) != 16:
+            raise forms.ValidationError("Invalid card number.")
+        try:
+            number = int(cardNumber)
+            return cardNumber
+        except ValueError:
+            raise forms.ValidationError("Invalid card number.")
+
+
+
+    def clean_CVC(self):
+        CVC = self.cleaned_data['CVC']
+
+        if len(CVC) != 3:
+            raise forms.ValidationError("Invalid CVC.")
+
+        try:
+            number = int(CVC)
+            return CVC
+        except ValueError:
+            raise forms.ValidationError("Invalid CVC.")

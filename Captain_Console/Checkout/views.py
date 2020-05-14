@@ -37,6 +37,7 @@ def CheckoutView(request):
             request.session['formFilled'] = formData
             request.session['cartOrder'] = cartDict
             return redirect('payment-index')
+
     return render(request, 'payment/checkout.html', context)
 
 
@@ -64,13 +65,15 @@ def PaymentView(request):
         if request.method == 'POST':
             form = PaymentForm(data=request.POST)
             if form.is_valid():
-                cardAllInfo = form.cleaned_data
-                name = cardAllInfo['cardName']
-                number = cardAllInfo['cardNumber']
-                cardInfo = {'cardName': name, 'cardNumber': number[-4:]}
-                context = {'paymentInfo': formData['paymentInfo'], 'cardInfo': cardInfo, 'cart': cartItems}
+                cartAllInfo = form.cleaned_data
+                name = cartAllInfo['cartName']
+                number = cartAllInfo['cartNumber']
+                cartInfo = {'cardName': name, 'cardNumber': number[-4:]}
+                context = {'paymentInfo': formData['paymentInfo'], 'cartInfo': cartInfo, 'cart': cartItems}
 
                 return render(request, 'payment/review.html', context)
+            else:
+                print(form.errors)
 
         return render(request, 'payment/payment.html', context)
 
