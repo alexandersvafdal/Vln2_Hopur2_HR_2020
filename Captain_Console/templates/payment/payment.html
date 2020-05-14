@@ -3,18 +3,27 @@
 {% load i18n %}
 
   <div>
-    {% if form.errors %}
-    <h1>{% trans "Please correct the following errors" %}</h1>
-    {% else %}
-    <h1>{% trans "Payment Information" %}</h1>
-    {% endif %}
+    <div class="text-center">
+      <h2>Payment form</h2>
+    </div>
 
-    <form action="" method="post">{% csrf_token %}
-    <table>
-    {{ form }}
-    </table>
-    <input type="submit" class="btn btn-primary mt-2 mb-2" value="Checkout"/>
-    </form>
+    <div class="row">
+
+      <div class="col-md-12 order-md-2 mb-4 p-0">
+        <form action="" method="post">
+          {% csrf_token %}
+            <div class="row justify-content-center">
+              <div class="col-auto">
+                <table class="table table-responsive">
+                  {{ form }}
+                </table>
+              </div>
+            </div>
+          <input type="submit" class="btn btn-primary mt-2 mb-2" value="Checkout"/>
+        </form>
+      </div>
+    </div>
+
   </div>
 
 
