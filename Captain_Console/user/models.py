@@ -8,3 +8,6 @@ class Profile(models.Model):
     LastName = models.CharField(max_length=255, blank=True)
     profile_image = models.CharField(max_length=9999, blank=True)
     cart = models.CharField(max_length=9999999, default="{}")
+
+    def __str__(self):
+        return self.FirstName

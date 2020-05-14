@@ -9,7 +9,8 @@
         <li class="list-group-item align-items-center justify-content-between">
             <a href="/{{ item.data.pk }}">{{ item.data.name }}</a> Total Price: {{ item.total }}
             <span class="badge badge-primary badge-pill">{{ item.qty }}</span>
-            <button onclick="deleteFromCart({{ item.data.id }});" class="btn btn btn-outline-danger btn-sm float-right" >
+            <button onclick="deleteFromCart({{ item.data.id }});deletedFromCart();" class="btn btn btn-outline-danger btn-sm float-right" >
+
                 <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
         </li>
@@ -17,6 +18,8 @@
     </ul>
 
 {% endfor %}
+            <div id="deletedFromCart" class="pull-right alert alert-danger d-none"><i class="fa fa-cart-plus mr-2"></i>Item has been deleted</div>
+
     <br>
             <h3 class="">Total: $ {{ cartTotal }}</h3>
             <br>

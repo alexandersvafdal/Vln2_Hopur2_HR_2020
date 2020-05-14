@@ -15,7 +15,6 @@ def addToCart(request):
         body_unicode = request.body.decode('utf-8')
         body = dict((dataString.split("=") for dataString in body_unicode.split("&") if dataString))
         productId = body["productId"]
-
         if productId and request.user.id:
 
             user = Profile.objects.get(user_id=request.user.id)

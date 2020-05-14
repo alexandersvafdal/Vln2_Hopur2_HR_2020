@@ -26,6 +26,13 @@ function addedToCart(){
   (function fade(){(elem.style.opacity-=.1)<0?elem.classList.toggle('d-none'):setTimeout(fade,250)})();
 }
 
+function deletedFromCart(){
+  const elem = document.getElementById('deletedFromCart');
+  elem.classList.toggle('d-none');
+  elem.style.opacity = 1;
+  (function fade(){(elem.style.opacity-=.1)<0?elem.classList.toggle('d-none'):setTimeout(fade,250)})();
+}
+
 function addedToCartHome(){
   const elem = document.getElementById('addedToCartDivHome');
   elem.classList.toggle('d-none');
