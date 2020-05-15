@@ -25,7 +25,8 @@
           </li>
         </ul>
         {% endfor %}
-        <h2><span class="badge badge-success badge-pill ">Total: ${{ orderTotal }}</span></h2>
+        <h2><span class="badge badge-success badge-pill float-right">Total: ${{ orderTotal }}</span></h2>
+        <a class="btn btn-primary mt-2 mb-2 float-left" href="{% url 'cart-index' %}">Back to cart</a>
       </div>
 
       <div class="col-md-6 order-md-2 mb-4 p-0">
@@ -38,11 +39,9 @@
               </table>
             </div>
           </div>
-          <input type="submit" class="btn btn-primary mt-2 mb-2 float-right" value="Checkout"/>
+          <input type="submit" class="btn btn-primary mt-2 mb-2 float-right" value="Proceed to checkout"/>
         </form>
-          <a class="btn btn-primary mt-2 mb-2" href="{% url "index" %}">Go Back</a>
       </div>
-
     </div>
 
   </div>

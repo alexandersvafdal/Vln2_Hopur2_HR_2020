@@ -31,7 +31,9 @@
                 </li>
               </ul>
               {% endfor %}
-                <h2><span class="badge badge-secondary badge-pill">Total: ${{ cart.orderTotal }}</span></h2>
+                <h2><span class="badge badge-success badge-pill float-right">Total: ${{ cart.orderTotal }}</span></h2>
+                <a class="btn btn-primary mt-2 mb-5 float-left" href="{% url 'payment-index' %}">Go Back</a>
+
             </div>
 
             <div class="col-md-6 order-md-2 mb-4 p-0">
@@ -87,11 +89,10 @@
                         </table>
                         <div>
                             <button type="submit" class="btn btn-primary mt-2 mb-2 float-right">Confirm</button>
-
                         </div>
-                        <a class="btn btn-primary mt-2 mb-2" href="{% url "payment-index" %}">Go Back</a>
                     </div>
                 </div>
+
             </div>
         </div>
 
