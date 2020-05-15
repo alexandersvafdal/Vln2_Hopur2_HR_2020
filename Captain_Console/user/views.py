@@ -12,7 +12,7 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect('login')
-        print("Im not a valid form")
+
         return render(request, 'user/register.html', {
             'form': UserCreationForm(), "errors": form.errors
         })
