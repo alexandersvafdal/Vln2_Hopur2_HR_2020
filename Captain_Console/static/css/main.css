@@ -3,6 +3,18 @@
     color: white;
 }
 
+.text{
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 30%;
+    text-align: left;
+    width: 80%;
+    color: white;
+}
+
 .center-block {
    margin-left:auto;
    margin-right:auto;
