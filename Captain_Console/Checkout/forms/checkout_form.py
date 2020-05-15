@@ -40,6 +40,9 @@ class PaymentForm(forms.ModelForm):
             monthNow = now.month
             yearNow = now.year
 
+            if int(month) > 12 or int(month) <= 0:
+                raise forms.ValidationError("Invalid date")
+
             if int(month) < monthNow or int(year) < (yearNow - 2000):
                 raise forms.ValidationError("This date has expired")
 
