@@ -67,9 +67,9 @@ def PaymentView(request):
             form = PaymentForm(data=request.POST)
             if form.is_valid():
                 cartAllInfo = form.cleaned_data
-                name = cartAllInfo['cardName']
-                number = cartAllInfo['cardNumber']
-                cardInfo = {'cardName': name, 'cardNumber': number[-4:]}
+                name = cartAllInfo['name_of_cardholder']
+                number = cartAllInfo['card_number']
+                cardInfo = {'name_of_cardholder': name, 'card_number': number[-4:]}
                 context = {'paymentInfo': formData['paymentInfo'], 'cardInfo': cardInfo, 'cart': cartItems}
                 return render(request, 'payment/review.html', context)
             else:
@@ -95,8 +95,8 @@ def ReviewView(request):
             formInfo = formData['paymentInfo']
             form = Orders(
                 user=user,
-                firstName=formInfo['firstName'],
-                lastName=formInfo['lastName'],
+                first_name=formInfo['first_name'],
+                last_name=formInfo['last_name'],
                 email=formInfo['email'],
                 address=formInfo['address'],
                 city=formInfo['city'],
