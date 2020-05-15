@@ -12,9 +12,10 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect('login')
-    return render(request, 'user/register.html', {
-        'form': UserCreationForm()
-    })
+        print("Im not a valid form")
+        return render(request, 'user/register.html', {
+            'form': UserCreationForm()
+        })
 
 def profile(request):
     profile = Profile.objects.filter(user=request.user).first()
