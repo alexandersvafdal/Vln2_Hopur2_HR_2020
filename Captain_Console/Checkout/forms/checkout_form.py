@@ -12,6 +12,7 @@ class CheckoutForm(forms.ModelForm):
             'firstName',
             'lastName',
             'email',
+            'address',
             'city',
             'zip',
             'country',

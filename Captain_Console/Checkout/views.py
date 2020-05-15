@@ -100,6 +100,7 @@ def ReviewView(request):
                 firstName=formInfo['firstName'],
                 lastName=formInfo['lastName'],
                 email=formInfo['email'],
+                address=formInfo['address'],
                 city=formInfo['city'],
                 zip=formInfo['zip'],
                 country=formInfo['country'],

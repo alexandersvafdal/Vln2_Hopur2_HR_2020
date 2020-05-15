@@ -9,6 +9,7 @@ class Orders(models.Model):
     firstName = models.CharField(max_length=255)
     lastName = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
+    address = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     zip = models.CharField(max_length=10)
     country = models.CharField(max_length=255)
