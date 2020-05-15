@@ -7,21 +7,6 @@
       <h2>Payment form</h2>
     </div>
 
-    {% if form.errors %}
-      {% for field in form %}
-          {% for error in field.errors %}
-              <div class="alert alert-danger">
-                  <strong>{{ error|escape }}</strong>
-              </div>
-          {% endfor %}
-      {% endfor %}
-      {% for error in form.non_field_errors %}
-          <div class="alert alert-danger">
-              <strong>{{ error|escape }}</strong>
-          </div>
-      {% endfor %}
-    {% endif %}
-
     <div class="row">
       <div class="col-md-12 order-md-2 mb-4 p-0">
         <form action="" method="post">
@@ -33,9 +18,13 @@
                 </table>
               </div>
             </div>
-          <input type="submit" class="btn btn-primary mt-2 mb-2" value="Checkout"/>
+          <input type="submit" class="btn btn-primary mt-2 mb-2 float-right" value="Checkout"/>
         </form>
-        <div class="alert alert-warning"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ error }}</div>
+          <a class="btn btn-primary mt-2 mb-2" href="/checkout">Go Back</a>
+
+        {% if error %}
+            <div class="alert alert-warning"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ error }}</div>
+        {% endif %}
       </div>
     </div>
 

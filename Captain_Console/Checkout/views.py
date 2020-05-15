@@ -66,13 +66,11 @@ def PaymentView(request):
         if request.method == 'POST':
             form = PaymentForm(data=request.POST)
             if form.is_valid():
-                print(form.cleaned_data)
                 cartAllInfo = form.cleaned_data
                 name = cartAllInfo['cardName']
                 number = cartAllInfo['cardNumber']
                 cardInfo = {'cardName': name, 'cardNumber': number[-4:]}
                 context = {'paymentInfo': formData['paymentInfo'], 'cardInfo': cardInfo, 'cart': cartItems}
-
                 return render(request, 'payment/review.html', context)
             else:
                 context['error'] = form.errors
