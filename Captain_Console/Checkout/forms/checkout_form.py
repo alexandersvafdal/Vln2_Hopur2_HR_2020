@@ -9,8 +9,8 @@ class CheckoutForm(forms.ModelForm):
         model = Orders
         exclude = ['id', 'user', 'cart']
         fields = [
-            'firstName',
-            'lastName',
+            'first_name',
+            'last_name',
             'email',
             'address',
             'city',
@@ -24,9 +24,9 @@ class PaymentForm(forms.ModelForm):
     class Meta:
         model = Payment
         fields = [
-            'cardName',
-            'cardNumber',
-            'expirationDate',
+            'name_of_cardholder',
+            'card_number',
+            'expiration_date',
             'CVC',
         ]
 

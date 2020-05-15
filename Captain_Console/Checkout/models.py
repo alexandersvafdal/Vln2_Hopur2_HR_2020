@@ -6,8 +6,8 @@ from django_countries.fields import CountryField
 # Create your models here.
 class Orders(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    firstName = models.CharField(max_length=255)
-    lastName = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
@@ -16,7 +16,7 @@ class Orders(models.Model):
     cart = models.CharField(max_length=9999999, default="{}")
 
 class Payment(models.Model):
-    cardName = models.CharField(max_length=255)
-    cardNumber = models.CharField(max_length=16)
-    expirationDate = models.CharField(max_length=5)
+    name_of_cardholder = models.CharField(max_length=255)
+    card_number = models.CharField(max_length=16)
+    expiration_date = models.CharField(max_length=5)
     CVC = models.CharField(max_length=3)

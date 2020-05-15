@@ -20,8 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a673fc5-79a3-4a08-8510-5247a6fe0e59" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ec3c2638-2dce-4668-9749-ac1e545d3f5f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ec3c2638-2dce-4668-9749-ac1e545d3f5f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Captain_Console/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/Checkout/forms/checkout_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/Checkout/forms/checkout_form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/Checkout/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/Checkout/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +78,9 @@
       <workItem from="1589365593591" duration="17395000" />
       <workItem from="1589453745787" duration="9032000" />
       <workItem from="1589476100873" duration="6860000" />
-      <workItem from="1589549018584" duration="3502000" />
+      <workItem from="1589549018584" duration="4613000" />
+      <workItem from="1589562857261" duration="975000" />
+      <workItem from="1589576026845" duration="386000" />
     </task>
     <servers />
   </component>
