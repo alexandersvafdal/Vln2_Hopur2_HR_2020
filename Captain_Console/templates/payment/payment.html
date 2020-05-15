@@ -20,7 +20,7 @@
             </div>
           <input type="submit" class="btn btn-primary mt-2 mb-2 float-right" value="Checkout"/>
         </form>
-          <a class="btn btn-primary mt-2 mb-2" href="/checkout">Go Back</a>
+          <a class="btn btn-primary mt-2 mb-2" href="{% url "checkout-index" %}">Go Back</a>
 
         {% if error %}
             <div class="alert alert-warning"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ error }}</div>
