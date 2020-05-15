@@ -20,7 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a673fc5-79a3-4a08-8510-5247a6fe0e59" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Captain_Console/Checkout/forms/checkout_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/Checkout/forms/checkout_form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/Checkout/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/Checkout/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Captain_Console/Checkout/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Captain_Console/Checkout/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +77,7 @@
       <workItem from="1589365593591" duration="17395000" />
       <workItem from="1589453745787" duration="9032000" />
       <workItem from="1589476100873" duration="6860000" />
-      <workItem from="1589549018584" duration="1755000" />
+      <workItem from="1589549018584" duration="2543000" />
     </task>
     <servers />
   </component>

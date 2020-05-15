@@ -12,8 +12,8 @@ class Orders(models.Model):
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     zip = models.CharField(max_length=10)
-    country = models.CharField(max_length=255)
-    cart = CountryField(blank_label='Select country')
+    country = CountryField(blank_label='Select country')
+    cart = models.CharField(max_length=9999999, default="{}")
 
 class Payment(models.Model):
     cardName = models.CharField(max_length=255)

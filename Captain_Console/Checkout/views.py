@@ -80,7 +80,7 @@ def PaymentView(request):
 
     else:
         print("error redirect")
-        return redirect('checkout-index')
+        return redirect('cart-index')
 
 
 @login_required()
@@ -109,12 +109,14 @@ def ReviewView(request):
             profileUser = Profile.objects.get(user_id=request.user.id)
             profileUser.cart = "{}"
             profileUser.save()
+            del request.session['formFilled']
+            del request.session['cartOrder']
             return redirect('order-success')
 
         return render(request, 'payment/review.html')
 
     else:
-        return redirect('checkout-index')
+        return redirect('cart-index')
 
 
 @login_required()
